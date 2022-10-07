@@ -29,7 +29,7 @@
   <!-- Your visible elements -->
   <!-- Navigation bar -->
   <nav>
-    <a href="https://www.byu.edu">Visit byu.edu!</a>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Visit byu.edu!</a>
     <form action="actions/logout_action.php">
     <input class="logout-button" type="submit" value="Logout" required><br></form>
   </nav>
