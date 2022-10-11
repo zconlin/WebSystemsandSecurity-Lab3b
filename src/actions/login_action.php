@@ -59,6 +59,7 @@ $stmt->bind_result($id);
 $stmt->fetch();
 $_SESSION["id"] = $id;
 $stmt->close();
+
 header("Location: ../index.php");
 die();
 ?>

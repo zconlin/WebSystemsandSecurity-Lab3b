@@ -114,6 +114,15 @@ nav a {
 	height: 30px;
 }
 
+.logout-button {
+	background-color: var(--accent);
+	color: var(--primary-text);
+	right: auto;
+	border-radius: 5px;
+	font-weight: bold;
+	height: 30px;
+}
+
 .set-width {
 	width: calc(100% - 12em);
 	box-sizing: border-box;

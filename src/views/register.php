@@ -7,7 +7,14 @@ echo $_SESSION["usernameError"];
 unset($_SESSION["usernameError"]);
 ?>
 
-<h2>Register New User</h2>
+<head>
+    <title>Login</title>  
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<h2 font-family: Sofia, sans-serif>Register New User</h2>
 <form method="post" action="/actions/register_action.php">
     Username:
     <input type="text" name = "usernameRegister" required><br>
@@ -16,5 +23,8 @@ unset($_SESSION["usernameError"]);
     Confirm Password:
     <input type="password" name = "passwordConfirm" required><br>
     <input type="hidden" name="form_submitted" value="1" />
-    <input type="submit" value="Submit">
+    <input class="create-button" type="submit" value="Submit">
+</form>
+<form action="login.php" method="post">
+    <button class="create-button" name = "login">I already have an account</button>
 </form>
