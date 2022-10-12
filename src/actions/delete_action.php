@@ -13,25 +13,11 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$stmt = $conn->prepare("SELECT `done` FROM task WHERE id = ?");
+$stmt = $conn->prepare("DELETE FROM `task` WHERE id = ?");
 $stmt->bind_param("i", $_POST["taskID"]);
 $stmt->execute();
-$stmt->bind_result($done);
-$stmt->fetch();
 $stmt->close();
 
-if($done == 1) {
-    $stmt = $conn->prepare("UPDATE `task` SET `done` = 0 WHERE id = ?");
-    $stmt->bind_param("i", $_POST["taskID"]);
-    $stmt->execute();
-    $stmt->close();
-}
-else {
-    $stmt = $conn->prepare("UPDATE `task` SET `done` = 1 WHERE id = ?");
-    $stmt->bind_param("i", $_POST["taskID"]);
-    $stmt->execute();
-    $stmt->close();
-}
 
 header("Location: ../index.php");
 die();

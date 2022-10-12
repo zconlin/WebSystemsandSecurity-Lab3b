@@ -1,6 +1,5 @@
 <?php
 session_start();
-echo var_dump($_SESSION["id"], $_POST["text"], $_POST["date"]);
 $mysql_servername = getenv("MYSQL_SERVERNAME");
 $mysql_user = getenv("MYSQL_USER");
 $mysql_password = getenv("MYSQL_PASSWORD");

@@ -1,10 +1,12 @@
 <?php 
   error_reporting(-1);
   session_start();
+
   if (!isset($_SESSION['logged_in'])) {
     header("Location: views/login.php");
   }  
-  echo var_dump($_SESSION["id"], $_SESSION["username"], $_SESSION["logged_in"], $_SESSION["user_id"]);
+
+  // echo var_dump($_SESSION["id"], $_SESSION["username"], $_SESSION["logged_in"], $_SESSION["user_id"]);
 
   $mysql_servername = getenv("MYSQL_SERVERNAME");
   $mysql_user = getenv("MYSQL_USER");
@@ -62,11 +64,19 @@
     $stmt->execute();
     $stmt->bind_result($task_id, $out_text, $out_date, $out_done);
     while ($stmt->fetch()) {
-      echo '<li class="task" id=' . $task_id . '>
-        <input type="checkbox" class="checkbox-icon" ${' . $task_id . ' ? "checked" : ""}>
-        <span class="task-description set-width">' . $out_text . '</span>
-        <span class="task-date">' . $out_date . '</span>
-        <button class="task-delete material-icon">clear</button><br>
+      $date=date_create($out_date);
+      echo '
+      <li class="task" id=' . $task_id . '>
+        <form name="checkbox" action="/actions/update_action.php" method="post" style="display: inline;">
+          <button type="submit" class="material-icon"><script> ' . ($out_done == 1) . ' ? (\'check_box\') : (\'check_box_outline_blank\') </script></button>
+          <input type="hidden" class="checkbox-icon" name="taskID" value=' . $task_id . '}>
+        </form>  
+        <span class="task-description set-width ${' . $out_done . ' ? \'checked\' : \'\'}">' . $out_text . '</span>
+        <span class="task-date">' . date_format($date, "m/d/Y") . '</span>
+        <form name="checkbox" action="/actions/delete_action.php" method="post" style="display: inline;">
+          <button type="submit" class="task-delete material-icon">delete</button><br>
+          <input type="hidden" class="checkbox-icon"name="taskID" value=' . $task_id . '}>
+          </form>
       </li>';
      }
      $stmt->close();
@@ -83,7 +93,6 @@
 
 </script>
   <!-- Links to scripts -->
-  <script src="js/script.js"></script>
 </body>
 
 </html>
