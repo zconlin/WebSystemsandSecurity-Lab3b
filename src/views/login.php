@@ -1,7 +1,6 @@
 <?php
    ob_start();
    session_start();
-   echo var_dump($_SESSION["id"], $_SESSION["username"], $_SESSION["logged_in"]);
    echo $_SESSION["usernameLoginError"];
    unset($_SESSION["usernameLoginError"]);
    echo $_SESSION["passwordLoginError"];
