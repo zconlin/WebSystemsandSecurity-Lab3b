@@ -68,7 +68,7 @@
       echo '
       <li class="task" id=' . $task_id . '>
         <form name="checkbox" action="/actions/update_action.php" method="post" style="display: inline;">
-          <button type="submit" class="material-icon"><script> ' . ($out_done == 1) . ' ? (\'check_box\') : (\'check_box_outline_blank\') </script></button>
+          <button type="submit" class="material-icon"> ' . ($out_done == 1) . ' ? (\'check_box\') : (\'check_box_outline_blank\') </button>
           <input type="hidden" class="checkbox-icon" name="taskID" value=' . $task_id . '}>
         </form>  
         <span class="task-description set-width ${' . $out_done . ' ? \'checked\' : \'\'}">' . $out_text . '</span>
@@ -81,6 +81,9 @@
      }
      $stmt->close();
      ?>
+    
+    <!-- <button type="submit" class="material-icon"><script> ' . ($out_done == 1) . ' ? (\'check_box\') : (\'check_box_outline_blank\') </script></button> -->
+
 
 </ul>
   <!-- Input Form -->
