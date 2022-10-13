@@ -18,7 +18,6 @@ $stmt->bind_param("i", $_POST["taskID"]);
 $stmt->execute();
 $stmt->close();
 
-
 header("Location: ../index.php");
 die();
 ?>

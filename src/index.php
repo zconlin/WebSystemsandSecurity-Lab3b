@@ -65,6 +65,7 @@
     $stmt->bind_result($task_id, $out_text, $out_date, $out_done);
     while ($stmt->fetch()) {
       $date=date_create($out_date);
+      
       if($out_done == 1) {
         $whichIcon = "check_box";
         $strikethrough = "checked-task";
@@ -73,18 +74,22 @@
         $whichIcon = "check_box_outline_blank";
         $strikethrough = "";
       }
+
       echo '
       <li class="task" id=' . $task_id . '>
         <form name="checkbox" action="/actions/update_action.php" method="post" style="display: inline;">
           <button type="submit" class="material-icon">' . $whichIcon . '</button>
           <input type="hidden" class="checkbox-icon" name="taskID" value=' . $task_id . '}>
         </form>  
+
         <span class="task-description set-width ' . $strikethrough . '">' . $out_text . '</span>
         <span class="task-date">' . date_format($date, "m/d/Y") . '</span>
+
         <form name="checkbox" action="/actions/delete_action.php" method="post" style="display: inline;">
           <button type="submit" class="task-delete material-icon">delete</button><br>
           <input type="hidden" class="checkbox-icon"name="taskID" value=' . $task_id . '}>
           </form>
+
       </li>';
      }
      $stmt->close();

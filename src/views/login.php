@@ -1,6 +1,7 @@
 <?php
    ob_start();
    session_start();
+
    echo $_SESSION["usernameLoginError"];
    unset($_SESSION["usernameLoginError"]);
    echo $_SESSION["passwordLoginError"];
@@ -19,8 +20,11 @@
    <body>
       <h2>Enter Username and Password</h2>       
       <div>
+         
       <form action="/actions/login_action.php" method="post">
+         Username: 
          <input type="text" name="usernameLogin" placeholder="username" required autofocus></br>
+         Password: 
          <input type="password" name="password" placeholder="password" required></br>
          <button class="create-button" name="login">Login</button>
       </form>
